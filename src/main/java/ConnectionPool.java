@@ -1,15 +1,20 @@
+import Responses.User;
+
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class ConnectionPool {
     private final LinkedList<Socket> queuedConnections;
     private volatile int concurrentConnections;
     private final int maxConnections;
+    private final ArrayList<User> activeUsers;
 
     public ConnectionPool(int maxConnections) {
         this.queuedConnections = new LinkedList<>();
         this.concurrentConnections = 0;
         this.maxConnections = maxConnections;
+        this.activeUsers = new ArrayList<>();
     }
 
     // Setup connection
