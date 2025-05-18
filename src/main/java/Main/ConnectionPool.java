@@ -1,4 +1,4 @@
-import Responses.User;
+package Main;
 
 import java.net.Socket;
 import java.util.ArrayList;

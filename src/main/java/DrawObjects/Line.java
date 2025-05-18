@@ -1,6 +1,7 @@
 package DrawObjects;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Line implements Drawable {
     public final Coord start;
@@ -15,9 +16,11 @@ public class Line implements Drawable {
         this.size = size;
     }
 
-    public void draw(Graphics2D g2D) {
+    public void draw(BufferedImage image) {
+        Graphics2D g2D = image.createGraphics();
         g2D.setColor(colour);
         g2D.setStroke(new BasicStroke(size));
         g2D.drawLine(start.x, start.y, end.x, end.y);
+        g2D.dispose();
     }
 }

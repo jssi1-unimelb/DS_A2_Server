@@ -1,3 +1,5 @@
+package Responses;
+
 public class ConnectionResponse {
     private String message;
 

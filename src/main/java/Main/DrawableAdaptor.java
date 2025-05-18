@@ -1,3 +1,5 @@
+package Main;
+
 import DrawObjects.*;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -24,6 +26,7 @@ public class DrawableAdaptor extends TypeAdapter<Drawable> {
             case "oval" -> GsonUtil.gson.fromJson(json, Oval.class);
             case "rectangle" -> GsonUtil.gson.fromJson(json, Rectangle.class);
             case "text" -> GsonUtil.gson.fromJson(json, Text.class);
+            case "free draw" -> GsonUtil.gson.fromJson(json, FreeDraw.class);
             default -> throw new IllegalArgumentException("Unknown type: " + shapeType);
         };
     }

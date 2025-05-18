@@ -1,7 +1,4 @@
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
+package Main;
 
 public class Main {
     public static void main(String[] args) {

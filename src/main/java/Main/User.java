@@ -1,8 +1,8 @@
-package Responses;
+package Main;
 
 public class User {
-    private String id;
-    private String username;
+    public String id;
+    public String username;
     public String role;
 
 

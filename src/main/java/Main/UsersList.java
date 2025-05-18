@@ -1,4 +1,4 @@
-import Responses.User;
+package Main;
 
 import java.util.ArrayList;
 
@@ -19,18 +19,9 @@ public class UsersList {
     }
 
     public synchronized void removeUser(User user) {
-        users.remove(user);
+        users.removeIf(u -> u.id.equals(user.id));
 
         // Update everyone
         server.pushUserUpdate(users);
-    }
-
-    public User getManager() {
-        for(User user : users) {
-            if(user.role.equals("manager")) {
-                return user;
-            }
-        }
-        return null;
     }
 }
