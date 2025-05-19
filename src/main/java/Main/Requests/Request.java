@@ -1,4 +1,4 @@
-package Requests;
+package Main.Requests;
 
 public abstract class Request {
     public String role;

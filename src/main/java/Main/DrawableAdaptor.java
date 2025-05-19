@@ -1,6 +1,6 @@
 package Main;
 
-import DrawObjects.*;
+import Main.DrawObjects.*;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.TypeAdapter;

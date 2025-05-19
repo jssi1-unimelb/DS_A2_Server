@@ -1,6 +1,6 @@
 package Main;
 
-import Responses.ConnectionResponse;
+import Main.Responses.ConnectionResponse;
 
 import java.awt.image.BufferedImage;
 import java.io.DataOutputStream;

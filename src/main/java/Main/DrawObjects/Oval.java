@@ -1,16 +1,16 @@
-package DrawObjects;
+package Main.DrawObjects;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Rectangle implements Drawable {
+public class Oval implements Drawable {
     private final Coord start;
     private final int width;
     private final int height;
     private final Color colour;
     private final int size;
 
-    public Rectangle(Coord start, int width, int height, Color colour, int size) {
+    public Oval(Coord start, int width, int height, Color colour, int size) {
         this.start = start;
         this.width = width;
         this.height = height;
@@ -22,7 +22,7 @@ public class Rectangle implements Drawable {
         Graphics2D g2D = image.createGraphics();
         g2D.setColor(colour);
         g2D.setStroke(new BasicStroke(size));
-        g2D.drawRect(start.x, start.y, Math.abs(width), Math.abs(height));
+        g2D.drawOval(start.x, start.y, width, height);
         g2D.dispose();
     }
 }

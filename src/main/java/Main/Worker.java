@@ -1,7 +1,7 @@
 package Main;
 
-import Requests.*;
-import Responses.*;
+import Main.Requests.*;
+import Main.Responses.*;
 
 import java.awt.image.BufferedImage;
 import java.io.DataInputStream;

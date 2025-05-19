@@ -1,6 +1,6 @@
 package Main;
 
-import DrawObjects.Drawable;
+import Main.DrawObjects.Drawable;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
