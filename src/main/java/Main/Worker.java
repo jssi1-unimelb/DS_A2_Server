@@ -97,8 +97,11 @@ public class Worker extends Thread{
                             whiteboard.closeWhiteboard();
                         }
                         case "disconnect" -> {
-                            users.removeUser(currentUser);
                             hasConnection = false;
+                            users.removeUser(currentUser);
+                            if(currentUser.role.equals("manager")) { // Kick all users when manager disconnects
+                                server.disconnectAll();
+                            }
                         }
                         case "kick" -> {
                             KickUserRequest kickUserRequest = GsonUtil.gson.fromJson(requestJson, KickUserRequest.class);
@@ -113,15 +116,19 @@ public class Worker extends Thread{
                 }
                 // Client disconnected
                 cleanUp();
-            } catch (IOException ioe) { // Client Terminated program
+            } catch (IOException ioe) { // Client terminated program
+                hasConnection = false;
+                users.removeUser(currentUser);
                 if(currentUser.role.equals("manager")) { // Kick all users when manager disconnects
                     server.disconnectAll();
                 }
                 cleanUp();
             } catch (RuntimeException e) {
+                hasConnection = false;
                 System.out.println("Runtime Exception: " + e.getMessage());
                 cleanUp();
             } catch (InterruptedException ie) {
+                hasConnection = false;
                 System.out.println("Interruption Exception: " + ie.getMessage());
                 cleanUp();
             }
@@ -173,19 +180,21 @@ public class Worker extends Thread{
     }
 
     public synchronized void newUserJoinRequest(User user) {
-        // Allows multiple users to queue up to be approved
-        while(IsJoinRequestAlreadyQueued) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+        if(hasConnection) {
+            // Allows multiple users to queue up to be approved
+            while(IsJoinRequestAlreadyQueued) {
+                try {
+                    wait();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
-        }
 
-        IsJoinRequestAlreadyQueued = true;
-        UserJoinRequest joinRequest = new UserJoinRequest(user);
-        String joinRequestStr = GsonUtil.gson.toJson(joinRequest);
-        write(joinRequestStr);
+            IsJoinRequestAlreadyQueued = true;
+            UserJoinRequest joinRequest = new UserJoinRequest(user);
+            String joinRequestStr = GsonUtil.gson.toJson(joinRequest);
+            write(joinRequestStr);
+        }
     }
 
     public synchronized void sendDisconnectResponse(String msg) {
