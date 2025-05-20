@@ -1,6 +1,6 @@
+// Jiachen Si 1085839
 package Main.DrawObjects;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public interface Drawable {
