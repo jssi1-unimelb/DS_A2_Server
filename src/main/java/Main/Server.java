@@ -1,10 +1,12 @@
 package Main;
 
-import Main.Responses.ConnectionResponse;
+import Main.Gson.GsonUtil;
+import Main.ServerMsg.ConnectionResponse;
 
 import java.awt.image.BufferedImage;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
@@ -20,7 +22,7 @@ public class Server {
     private final Whiteboard whiteboard;
     private DataOutputStream dos = null;
 
-    public Server(int port) {
+    public Server(InetAddress host, int port) {
         connections = new ConnectionPool(MAX_THREADS);
         usersList = new UsersList(this);
         whiteboard = new Whiteboard(this);
@@ -32,7 +34,7 @@ public class Server {
         }
 
         System.out.println("Server is online\n");
-        try ( ServerSocket server = new ServerSocket(port)) {
+        try ( ServerSocket server = new ServerSocket(port, MAX_THREADS, host)) {
             while(true) {
                 Socket socket = server.accept();
                 socket.setSoTimeout(TIMEOUT);
@@ -117,7 +119,7 @@ public class Server {
     }
 
     // Helper function that converts strings to byte arrays to be sent
-    public void write(String req) {
+    private void write(String req) {
         try {
             byte[] reqBytes = req.getBytes(StandardCharsets.UTF_8);
             dos.writeInt(reqBytes.length); // Send length of byte array

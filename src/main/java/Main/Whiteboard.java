@@ -7,12 +7,10 @@ import java.awt.image.BufferedImage;
 
 public class Whiteboard {
     private BufferedImage whiteboard;
-    private final Graphics2D g2D;
     private final Server server;
 
     public Whiteboard(Server server) {
         whiteboard = new BufferedImage(700, 600, BufferedImage.TYPE_INT_ARGB);
-        g2D = whiteboard.createGraphics();
         this.server = server;
     }
 

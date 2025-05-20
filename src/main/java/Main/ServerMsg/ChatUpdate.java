@@ -1,8 +1,8 @@
-package Main.Responses;
+package Main.ServerMsg;
 
 import Main.ChatItem;
 
-public class ChatUpdate extends Response {
+public class ChatUpdate extends ServerMsg {
     public ChatItem item;
 
     public ChatUpdate(ChatItem chatItem) {

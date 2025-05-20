@@ -1,4 +1,4 @@
-package Main.Responses;
+package Main.ServerMsg;
 
 public class ConnectionResponse {
     private String message;

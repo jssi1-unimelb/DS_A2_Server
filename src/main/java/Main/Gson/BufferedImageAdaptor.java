@@ -1,4 +1,4 @@
-package Main;
+package Main.Gson;
 
 import com.google.gson.*;
 import com.google.gson.stream.JsonReader;

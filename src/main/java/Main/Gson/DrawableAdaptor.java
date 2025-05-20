@@ -1,4 +1,4 @@
-package Main;
+package Main.Gson;
 
 import Main.DrawObjects.*;
 import com.google.gson.JsonObject;

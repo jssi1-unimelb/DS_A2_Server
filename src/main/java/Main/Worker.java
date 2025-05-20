@@ -1,7 +1,8 @@
 package Main;
 
-import Main.Requests.*;
-import Main.Responses.*;
+import Main.Gson.GsonUtil;
+import Main.ClientMsg.*;
+import Main.ServerMsg.*;
 
 import java.awt.image.BufferedImage;
 import java.io.DataInputStream;
@@ -148,7 +149,8 @@ public class Worker extends Thread{
     private void addUser(User user) {
         users.addUser(user);
         // Send the user the whiteboard
-        updateWhiteboard(whiteboard.getWhiteboard(), "new");
+        Worker userThread = server.getUserThread(user);
+        userThread.updateWhiteboard(whiteboard.getWhiteboard(), "new");
     }
 
     public synchronized void updateWhiteboard(BufferedImage whiteboard, String type) {
@@ -199,8 +201,8 @@ public class Worker extends Thread{
 
     public synchronized void sendDisconnectResponse(String msg) {
         if(hasConnection) {
-            DisconnectResponse disconnectResponse = new DisconnectResponse(msg);
-            String response = GsonUtil.gson.toJson(disconnectResponse);
+            DisconnectUpdate disconnectUpdate = new DisconnectUpdate(msg);
+            String response = GsonUtil.gson.toJson(disconnectUpdate);
             write(response);
         }
     }

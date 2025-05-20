@@ -1,4 +1,4 @@
-package Main;
+package Main.Gson;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
@@ -14,9 +14,6 @@ public class ColourAdaptor extends TypeAdapter<Color> {
 
     @Override
     public Color read(JsonReader jsonReader) throws IOException {
-//        JsonObject json = JsonParser.parseReader(jsonReader).getAsJsonObject(); // Convert input to json
-//        String colourString = json.get("colour").getAsString(); //Get the obj type
-//        return Color.decode(colourString);
         return Color.decode(jsonReader.nextString());
     }
 }

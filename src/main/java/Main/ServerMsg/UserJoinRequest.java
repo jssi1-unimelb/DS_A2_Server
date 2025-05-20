@@ -1,8 +1,8 @@
-package Main.Responses;
+package Main.ServerMsg;
 
 import Main.User;
 
-public class UserJoinRequest extends Response {
+public class UserJoinRequest extends ServerMsg {
     public User user;
 
     public UserJoinRequest(User user) {

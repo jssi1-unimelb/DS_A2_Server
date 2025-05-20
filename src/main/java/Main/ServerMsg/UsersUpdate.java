@@ -1,10 +1,10 @@
-package Main.Responses;
+package Main.ServerMsg;
 
 import Main.User;
 
 import java.util.ArrayList;
 
-public class UsersUpdate extends Response {
+public class UsersUpdate extends ServerMsg {
     public ArrayList<User> users;
 
     public UsersUpdate(ArrayList<User> users) {

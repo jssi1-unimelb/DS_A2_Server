@@ -1,8 +1,8 @@
-package Main.Responses;
+package Main.ServerMsg;
 
 import java.awt.image.BufferedImage;
 
-public class WhiteboardUpdate extends Response {
+public class WhiteboardUpdate extends ServerMsg {
     public BufferedImage whiteboard;
     public String whiteboardUpdateType;
 

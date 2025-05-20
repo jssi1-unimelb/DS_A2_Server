@@ -3,7 +3,7 @@ package Main.DrawObjects;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Line implements Drawable {
+public class Line extends Shape {
     public final Coord start;
     public final Coord end;
     public final Color colour;

@@ -1,7 +1,7 @@
-package Main.Requests;
+package Main.ClientMsg;
 
 import java.awt.image.BufferedImage;
 
-public class NewWhiteboardRequest extends Request{
+public class NewWhiteboardRequest extends ClientMsg {
     public BufferedImage whiteboard;
 }
